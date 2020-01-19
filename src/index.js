@@ -59,7 +59,7 @@ class SequelizeDbAdapter {
 			this.db = new Sequelize(...this.opts);
 
 		return this.db.authenticate().then(() => {
-			this.db.sync({alter: false, force: false});
+			//this.db.sync({alter: false, force: false});
 			let modelDefinitionOrInstance = this.service.schema.model;
 			let modelReadyPromise;
 			let isModelInstance = modelDefinitionOrInstance
@@ -70,7 +70,7 @@ class SequelizeDbAdapter {
 				modelReadyPromise = Promise.resolve();
 			} else {
 				this.model = this.db.define(modelDefinitionOrInstance.name, modelDefinitionOrInstance.define, modelDefinitionOrInstance.options);
-				modelReadyPromise  = this.model.sync({force: false});
+				//modelReadyPromise  = this.model.sync({force: false});
 			}
 			this.service.model = this.model;
 
