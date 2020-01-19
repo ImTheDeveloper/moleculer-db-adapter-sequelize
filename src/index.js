@@ -70,7 +70,7 @@ class SequelizeDbAdapter {
 				modelReadyPromise = Promise.resolve();
 			} else {
 				this.model = this.db.define(modelDefinitionOrInstance.name, modelDefinitionOrInstance.define, modelDefinitionOrInstance.options);
-				modelReadyPromise  = this.model.sync();
+				modelReadyPromise  = this.model.sync({force: false});
 			}
 			this.service.model = this.model;
 
